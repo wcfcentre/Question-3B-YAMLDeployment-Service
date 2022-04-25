@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqconsumer
+spec:
+  selector:
+    matchLabels:
+      app: mqconsumer
+  template:
+    metadata:
+      labels:
+        app: mqconsumer
+    spec:
+      containers:
+      - name: mqconsumer
+        image: w8873docker/mqconsumer:1.0.0
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: RABBITMQ_PORT
+          value: "5672"
